@@ -1,0 +1,3 @@
+-- Replace XXX with the database column
+
+SELECT COUNT (DISTINCT RPE_KEY) FROM CT_REPORT_ENTRY WHERE XXX IS NOT NULL

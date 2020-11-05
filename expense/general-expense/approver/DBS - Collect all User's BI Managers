@@ -1,0 +1,5 @@
+-- This script pulls the User's Name & Login ID and Login ID of their BI Manager
+
+SELECT e1.First_name, e1.Last_name, e1.Login_ID, e1.BI_MANAGER_KEY, e2.Login_ID 
+FROM CT_EMPLOYEE as e1 join CT_Employee as e2 on e1.bi_manager_key= e2.emp_key 
+WHERE e1.ACTIVE = 'Y' and e1.BI_MANAGER_KEY is not null 

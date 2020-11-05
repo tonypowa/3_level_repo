@@ -1,0 +1,18 @@
+-- This Script pulls a list of all users who have XXX as an Aprover
+-- Replace XXX with Employee ID
+
+select distinct ct_employee.last_name, 
+ct_employee.first_name, 
+ct_employee.active, 
+ct_employee.emp_id, 
+ct_employee_1.last_name as approver_last_name, 
+ct_employee_1.first_name as approver_first_name, 
+ct_employee_1.emp_id as approver_employee_id 
+from ct_employee inner join 
+ct_workflow_subject_emp_map right outer join 
+ct_workflow_emp_auth_map inner join 
+ct_employee ct_employee_1 on ct_workflow_emp_auth_map.auth_emp_key = ct_employee_1.emp_key on 
+ct_workflow_subject_emp_map.wse_key = ct_workflow_emp_auth_map.wse_key on 
+ct_employee.emp_key = ct_workflow_subject_emp_map.emp_key 
+where ct_employee.active = 'Y' 
+and ct_employee_1.emp_id in ('XXX') order by ct_employee_1.emp_id 
